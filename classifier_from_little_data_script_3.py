@@ -117,7 +117,15 @@ model.fit_generator(
     validation_data=validation_generator,
     nb_val_samples=nb_validation_samples)
 
+# save json
+model_json = model.to_json()
+with open("model.json", "w") as json_file:
+    json_file.write(model_json)
+
+#save weights
 model.save_weights(full_model_weights_path)
 
-from keras.utils import plot_model
-plot_model(model, to_file='model.png')
+#save model
+model.save('model')
+
+
